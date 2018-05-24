@@ -1,0 +1,27 @@
+{
+  "name": "ejercicios-velocidad-fisica",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "scripts": {
+    "start": "webpack --config webpack.config.js",
+    "dev": "webpack --mode development",
+    "build": "webpack --mode production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlvaroMaceda/ejercicios-velocidad-fisica.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AlvaroMaceda/ejercicios-velocidad-fisica/issues"
+  },
+  "homepage": "https://github.com/AlvaroMaceda/ejercicios-velocidad-fisica#readme",
+  "devDependencies": {
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^3.2.0",
+    "webpack": "^4.8.3",
+    "webpack-cli": "^2.1.4"
+  }
+}
