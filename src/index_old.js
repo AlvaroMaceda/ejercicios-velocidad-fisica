@@ -2,8 +2,13 @@ import styles from './styles.css';
 
 import Movil from './Movil';
 
-let canvas = document.getElementById("myCanvas");
-let ctx = canvas.getContext("2d");
+let backCanvas = document.getElementById("front1");
+let bctx = backCanvas.getContext("2d");
+bctx.fillStyle = '#FF00FF';
+bctx.fillRect(0,0,200,200);
+
+let frontCanvas = document.getElementById("front1");
+let ctx = frontCanvas.getContext("2d");
 
 window.setInterval(1000, () => {
     console.log('banana');
@@ -12,17 +17,18 @@ window.setInterval(1000, () => {
 var colors=["#FF0000","#FF00FF","#FFFF00"];
 
 let i=0;
+let timer;
 function animate(time) {
     //--------------------
-    // Esto se quitará cuando esté el drawing de verdad
-    console.log(i);
-    if(i++<10) window.setInterval(() => requestAnimationFrame( animate ),1000);
+    console.log(i++);
     //--------------------
     draw(time);
-
+    if(i>5) clearInterval(timer);
 }
 
-function startAnimation() { animate(0); }
+function startAnimation() {
+    timer = window.setInterval(() => requestAnimationFrame( animate ),1000);
+}
 
 startAnimation();
 
