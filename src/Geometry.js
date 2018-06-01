@@ -13,6 +13,11 @@ export class Point {
     clone() {
         return new Point(this.x,this.y);
     }
+    add(point) {
+        this.x += point.x;
+        this.y += point.y;
+        return this;
+    }
 }
 
 export class Vector extends Point {
