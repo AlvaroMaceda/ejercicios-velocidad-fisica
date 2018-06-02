@@ -46,20 +46,14 @@ const Movil = class {
     }
     draw() {
         this.drawingContext.fillStyle = this.color;
-        let foo = this.coordinatesOfTheSquare();
-        console.log(`coordinates:${foo}`);
-        this.drawingContext.fillRect(foo[0],foo[1],foo[2],foo[3]);
-        // this.drawingContext.fillRect.apply(this.drawingContext,foo);
+        let square = this.coordinatesOfTheSquare();
+        this.drawingContext.fillRect.apply(this.drawingContext,square);
     }
     updatePosition(time) {
         this.position = this.position || this.initialPosition;
-        console.log(`position before:${JSON.stringify(this.position)}`);
-        // console.log(this.initialPosition);
-        // console.log(this.position);
-        // console.log(this.positionFormula);
+        // console.log(`position before:${JSON.stringify(this.position)}`);
         this.position = this.positionFormula(this.initialPosition,time);
-        // console.log(this.position);
-        console.log(`position after:${JSON.stringify(this.position)}`);
+        // console.log(`position after:${JSON.stringify(this.position)}`);
     }
 };
 addBuilderMethods(Movil.prototype,['DrawingContext','InitialPosition','PositionFormula']);

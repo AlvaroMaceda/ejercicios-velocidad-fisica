@@ -29,25 +29,20 @@ window.addEventListener('resize',function(){
 
 function linearMovement(speed) {
     return function(e0,time) {
-        console.log(`initial:${JSON.stringify(e0)}`);
-        let actual = e0.clone().add(speed.times(time));
-        console.log(`actual:${JSON.stringify(actual)}`);
-        console.log('--');
         return e0.clone().add(speed.times(time));
     }
 }
-let linear = linearMovement(new Vector(1,0));
-
-// ctx.fillRect(0,0,20,10);
-
+let linear = linearMovement(new Vector(100/1000,0));
 
 let m = new Movil();
+
 m.setDrawingContext(ctx).setInitialPosition(new Point(0,20)).setPositionFormula(linear);
-// m.draw();
-// m.erase();
-// m.updatePosition(20);
-// m.draw();
-// for(let i=0;i<100;i++){m.render(i)}
-m.render(280);
-// console.log(m);
-// m.render(20);
+
+function startAnimation() {
+    requestAnimationFrame( animate )
+}
+function animate(time) {
+    m.render(time);
+    if(m.position.x<300) requestAnimationFrame( animate );
+}
+startAnimation();
