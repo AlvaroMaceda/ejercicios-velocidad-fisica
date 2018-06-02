@@ -20,9 +20,13 @@ const Movil = class {
     constructor() {
         this.initialPosition = new Point(0,0);
         this.position = this.initialPosition;
-        this.height = 20;
-        this.width = 50;
+        this.height = 10;
+        this.width = 20;
         this.color = '#FF0000'
+    }
+    set initialPositionLALALA(pos) {
+        this._initialPosition = pos;
+        console.log('setting');
     }
     render(time) {
         this.erase();
@@ -41,18 +45,21 @@ const Movil = class {
         ]
     }
     draw() {
-        this.drawingContext.fillStyle = this.color + i++;
+        this.drawingContext.fillStyle = this.color;
         let foo = this.coordinatesOfTheSquare();
-        this.drawingContext.fillRect.apply(this.drawingContext,foo);
+        console.log(`coordinates:${foo}`);
+        this.drawingContext.fillRect(foo[0],foo[1],foo[2],foo[3]);
+        // this.drawingContext.fillRect.apply(this.drawingContext,foo);
     }
     updatePosition(time) {
-        console.log(`position after:${this.position.x},${this.position.y}`);
-        console.log(this.initialPosition);
-        console.log(this.position);
-        console.log(this.positionFormula);
+        this.position = this.position || this.initialPosition;
+        console.log(`position before:${JSON.stringify(this.position)}`);
+        // console.log(this.initialPosition);
+        // console.log(this.position);
+        // console.log(this.positionFormula);
         this.position = this.positionFormula(this.initialPosition,time);
-        console.log(this.position);
-        console.log(`position before:${this.position.x},${this.position.y}`);
+        // console.log(this.position);
+        console.log(`position after:${JSON.stringify(this.position)}`);
     }
 };
 addBuilderMethods(Movil.prototype,['DrawingContext','InitialPosition','PositionFormula']);
