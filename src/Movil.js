@@ -53,7 +53,7 @@ const Movil = class {
     }
     coordinatesOfTheSquare() {
         return [
-            this.position.x,
+            this.position.x-this.width,
             this.position.y,
             this.width,
             this.height

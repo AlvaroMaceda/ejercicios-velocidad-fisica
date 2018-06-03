@@ -8,7 +8,6 @@ let backCanvas = document.getElementById("front1");
 let back = backCanvas.getContext("2d");
 
 function adjustCanvasToContainer(parent, drawingContext) {
-    // let parent = canvas.parentElement;
     let positionInfo = parent.getBoundingClientRect();
     let height = positionInfo.height;
     let width = positionInfo.width;
