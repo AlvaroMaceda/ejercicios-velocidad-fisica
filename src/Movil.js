@@ -16,25 +16,40 @@ function addBuilderMethods(obj, properties) {
 
 let i;
 
+const WIDTH = 50;
+const HEIGHT =20;
+const WHEEL_WIDTH = 10;
+const WHEEL_HEIGHT = 5;
+
 const Movil = class {
     constructor() {
-        this.initialPosition = new Point(0,0);
-        this.position = this.initialPosition;
-        this.height = 10;
-        this.width = 20;
-        this.color = '#FF0000'
+        this._initialPosition = new Point(0,0);
+        this.position = this._initialPosition;
+        this.height = HEIGHT;
+        this.width = WIDTH;
+        this.wheelWidth = WHEEL_WIDTH;
+        this.wheelHeight = WHEEL_HEIGHT;
+        this.color = '#FF0000';
+        // Editor hints
+        this.ctx = null;
+        this.positionFormula = null;
     }
-    set initialPositionLALALA(pos) {
+    set drawingContext(ctx) {
+        this.ctx = ctx;
+    }
+    get DrawingContext() {return this.ctx}
+    set initialPosition(pos) {
         this._initialPosition = pos;
-        console.log('setting');
+        this.position = this._initialPosition;
     }
+    get initialPosition() {return this._initialPosition}
     render(time) {
         this.erase();
         this.updatePosition(time);
         this.draw();
     }
     erase() {
-        this.drawingContext.clearRect(0,0,1000,5000);
+        this.ctx.clearRect(0,0,1000,5000);
     }
     coordinatesOfTheSquare() {
         return [
@@ -44,15 +59,24 @@ const Movil = class {
             this.height
         ]
     }
+    drawWheels() {
+        this.drawWheel(0,0);
+    }
+    drawWheel(x,y) {
+        this.ctx.fillStyle = this.color;
+        this.ctx.fillRect(x,y,this.wheelWidth,this.wheelHeight);
+    }
     draw() {
-        this.drawingContext.fillStyle = this.color;
+        this.ctx.save();
+        this.ctx.fillStyle = this.color;
         let square = this.coordinatesOfTheSquare();
-        this.drawingContext.fillRect.apply(this.drawingContext,square);
+        this.ctx.fillRect.apply(this.ctx,square);
+        this.ctx.restore();
     }
     updatePosition(time) {
-        this.position = this.position || this.initialPosition;
+        this.position = this.position || this._initialPosition;
         // console.log(`position before:${JSON.stringify(this.position)}`);
-        this.position = this.positionFormula(this.initialPosition,time);
+        this.position = this.positionFormula(this._initialPosition,time);
         // console.log(`position after:${JSON.stringify(this.position)}`);
     }
 };

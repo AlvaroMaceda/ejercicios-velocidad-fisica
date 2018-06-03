@@ -3,26 +3,27 @@ import Movil from './Movil'
 import {Point, Vector} from "./Geometry";
 
 let frontCanvas = document.getElementById("front1");
-let ctx = frontCanvas.getContext("2d");
+let front = frontCanvas.getContext("2d");
+let backCanvas = document.getElementById("front1");
+let back = backCanvas.getContext("2d");
 
-/*
-function adjustCanvasToContainer(parent, ctx) {
+function adjustCanvasToContainer(parent, drawingContext) {
     // let parent = canvas.parentElement;
     let positionInfo = parent.getBoundingClientRect();
     let height = positionInfo.height;
     let width = positionInfo.width;
-    console.log(height);
-    ctx.width = width;
-    ctx.height = height;
+    drawingContext.width = width;
+    drawingContext.height = height;
 }
-adjustCanvasToContainer(frontCanvas.parentElement,ctx);
+adjustCanvasToContainer(frontCanvas.parentElement,front);
+/*
 window.addEventListener('resize',function(){
     console.log('hola');
     var width  = calculateDesiredWidth();  // your code here
     var height = calculateDesiredHeight(); // your code here
-    ctx.canvas.width  = width;
-    ctx.canvas.height = height;
-    ctx.translate(width/2,height/2); // now 0,0 is the center of the canvas.
+    front.canvas.width  = width;
+    front.canvas.height = height;
+    front.translate(width/2,height/2); // now 0,0 is the center of the canvas.
 },false);
 */
 
@@ -35,8 +36,7 @@ function linearMovement(speed) {
 let linear = linearMovement(new Vector(100/1000,0));
 
 let m = new Movil();
-
-m.setDrawingContext(ctx).setInitialPosition(new Point(0,20)).setPositionFormula(linear);
+m.setDrawingContext(front).setInitialPosition(new Point(0,20)).setPositionFormula(linear);
 
 function startAnimation() {
     requestAnimationFrame( animate )
