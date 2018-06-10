@@ -3,6 +3,13 @@ const HtmlWebPackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
+    
+    devServer: {
+        disableHostCheck: true,
+        host: '0.0.0.0',
+        port: 8081
+    },
+    
     entry: './src/index.js',
     output: {
         filename: 'bundle.js',
