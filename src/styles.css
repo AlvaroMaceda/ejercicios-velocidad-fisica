@@ -1,10 +1,15 @@
 body {
     padding: 0;
 }
+#front, #back, #foo {
+    width: 55vw;
+    height: 55vh;
+}
+#foo {
+    visibility: hidden;
+}
 #front, #back {
     position: absolute;
-    width: 95vw;
-    height: 95vh;
 }
 canvas {
     /*position: absolute;*/
