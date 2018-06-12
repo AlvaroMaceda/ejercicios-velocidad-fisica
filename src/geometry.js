@@ -1,22 +1,16 @@
 export class Point {
     constructor(x,y) {
-        this.set(x,y);
-    }
-    set(x,y) {
         this.x = x;
         this.y = y;
     }
     scale(factor) {
-        this.x *= factor;
-        this.y *= factor;
+        return new Point(this.x * factor,this.y * factor);
     }
     clone() {
         return new Point(this.x,this.y);
     }
     add(point) {
-        this.x += point.x;
-        this.y += point.y;
-        return this;
+        return new Point(this.x + point.x,this.y + point.y);
     }
 }
 

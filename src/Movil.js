@@ -1,4 +1,4 @@
-import {Point,Vector} from './Geometry';
+import {Point,Vector} from './geometry';
 import CarDrawing from "./CarDrawing";
 
 function firstLetterLowercase(string) { return string.charAt(0).toLowerCase() + string.slice(1);}
